@@ -4,6 +4,7 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import ProjectForm from './components/ProjectForm';
 import ProjectsList from './components/ProjectsList';
+import Dashboard from './components/Dashboard';
 import './App.css';
 
 const App = () => {
@@ -25,6 +26,9 @@ const App = () => {
               <Link to="/login">Login</Link>
             </li>
             <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+            <li>
               <Link to="/projects">Projects</Link>
             </li>
             <li>
@@ -40,6 +44,10 @@ const App = () => {
           <Route
             path="/login"
             element={<Login setToken={setToken} />}
+          />
+          <Route
+            path="/dashboard"
+            element={<Dashboard />}
           />
           <Route
             path="/projects/new"

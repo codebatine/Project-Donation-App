@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import { login } from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
-const Login = ({ setToken }) => {
+const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await login({ username, password });
-    const token = response.data.token;
-    setToken(token);
-    localStorage.setItem('token', token);
+    try {
+      const response = await login({ username, password });
+      localStorage.setItem('token', response.data.token);
+      navigate('/dashboard');
+    } catch (error) {
+      alert('Login failed. Please try again.');
+    }
   };
 
   return (
