@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
@@ -9,6 +9,19 @@ import './App.css';
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setToken('');
+    window.location.href = '/login';
+  };
 
   return (
     <Router>
@@ -22,9 +35,15 @@ const App = () => {
             <li>
               <Link to="/signup">Signup</Link>
             </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
+            {token ? (
+              <li>
+                <button onClick={handleLogout}>Logout</button>
+              </li>
+            ) : (
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            )}
             <li>
               <Link to="/dashboard">Dashboard</Link>
             </li>
