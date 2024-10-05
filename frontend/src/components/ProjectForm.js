@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
 import { createProject } from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
-const ProjectForm = ({ token }) => {
+const ProjectForm = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [targetAmount, setTargetAmount] = useState('');
   const [endDate, setEndDate] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await createProject({ name, description, targetAmount, endDate }, token);
-    alert('Project submitted successfully');
+    const token = localStorage.getItem('token');
+    try {
+      await createProject({ name, description, targetAmount, endDate }, token);
+      alert('Project submitted successfully');
+      navigate('/projects');
+    } catch (error) {
+      alert('Project creation failed. Please try again.');
+    }
   };
 
   return (
