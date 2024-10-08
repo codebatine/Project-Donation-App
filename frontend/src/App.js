@@ -66,7 +66,7 @@ const App = () => {
           />
           <Route
             path="/dashboard"
-            element={<Dashboard />}
+            element={<Dashboard token={token} />}
           />
           <Route
             path="/projects/new"
