@@ -9,7 +9,8 @@ import {
 import Signup from './components/Signup';
 import Login from './components/Login';
 import ProjectForm from './components/ProjectForm';
-import ProjectsList from './components/ProjectsList';
+import ProjectList from './components/ProjectList';
+import ProjectDetails from './components/ProjectDetails';
 import Dashboard from './components/Dashboard';
 import './App.css';
 
@@ -60,7 +61,11 @@ const App = () => {
           />
           <Route
             path="/projects"
-            element={<ProjectsList />}
+            element={<ProjectList />}
+          />
+          <Route
+            path="/projects/:id"
+            element={<ProjectDetails />}
           />
           <Route
             path="/"

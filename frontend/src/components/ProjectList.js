@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getProjects } from '../services/api';
+import { Link } from 'react-router-dom';
 
 const ProjectList = () => {
   const [projects, setProjects] = useState([]);
@@ -27,6 +28,7 @@ const ProjectList = () => {
             <p>{project.description}</p>
             <p>Target Amount: {project.targetAmount}</p>
             <p>End Date: {project.endDate}</p>
+            <Link to={`/projects/${project._id}`}>View Details</Link>
           </li>
         ))}
       </ul>
