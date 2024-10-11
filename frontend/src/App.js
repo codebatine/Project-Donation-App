@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  useLocation,
+} from 'react-router-dom';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import ProjectForm from './components/ProjectForm';
@@ -26,35 +32,15 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <h1>Donation Platform</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/signup">Signup</Link>
-            </li>
-            {token ? (
-              <li>
-                <button onClick={handleLogout}>Logout</button>
-              </li>
-            ) : (
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-            )}
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/projects">Projects</Link>
-            </li>
-            <li>
-              <Link to="/projects/new">Create Project</Link>
-            </li>
-          </ul>
-        </nav>
+        <header className="header">
+          <div className="header-container">
+            <h1>Donation Platform</h1>
+            <Navigation
+              token={token}
+              handleLogout={handleLogout}
+            />
+          </div>
+        </header>
         <Routes>
           <Route
             path="/signup"
@@ -83,6 +69,101 @@ const App = () => {
         </Routes>
       </div>
     </Router>
+  );
+};
+
+const Navigation = ({ token, handleLogout }) => {
+  const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const getLinkClass = (path) => (location.pathname === path ? 'active' : '');
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  return (
+    <nav>
+      <div
+        className={`hamburger ${isMobileMenuOpen ? 'open' : ''}`}
+        onClick={toggleMobileMenu}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul className={isMobileMenuOpen ? 'nav-links mobile' : 'nav-links'}>
+        <li>
+          <Link
+            to="/"
+            className={getLinkClass('/')}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/dashboard"
+            className={getLinkClass('/dashboard')}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Dashboard
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/projects"
+            className={getLinkClass('/projects')}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Projects
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/projects/new"
+            className={getLinkClass('/projects/new')}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Create Project
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/signup"
+            className={getLinkClass('/signup')}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Signup
+          </Link>
+        </li>
+        {token ? (
+          <li>
+            <Link
+              to="/"
+              onClick={() => {
+                handleLogout();
+                setIsMobileMenuOpen(false);
+              }}
+              className="logout"
+            >
+              Logout
+            </Link>
+          </li>
+        ) : (
+          <li>
+            <Link
+              to="/login"
+              className={getLinkClass('/login')}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Login
+            </Link>
+          </li>
+        )}
+      </ul>
+    </nav>
   );
 };
 
