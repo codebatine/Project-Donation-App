@@ -32,6 +32,10 @@ nav {
   position: relative;
 }
 
+li {
+  list-style-type: none;
+}
+
 .hamburger {
   display: none;
   font-size: 30px;

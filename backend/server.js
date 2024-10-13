@@ -17,12 +17,20 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.log('MongoDB connection error:', err));
+  .catch((err) => {
+    console.error('MongoDB connection error:', err);
+    process.exit(1);
+  });
 
 const authRoutes = require('./routes/authRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
+
+app.use((err, req, res, next) => {
+  console.error('Global error handler:', err.stack);
+  res.status(500).send('Something broke!');
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

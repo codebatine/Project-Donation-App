@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getProjects } from '../services/api';
 import Donation from './Donation';
 
-const ProjectDetails = () => {
+const ProjectDetails = ({ token }) => {
   const { id } = useParams();
   const [project, setProject] = useState(null);
 
@@ -31,7 +31,10 @@ const ProjectDetails = () => {
       <p>{project.description}</p>
       <p>Target Amount: ${project.targetAmount}</p>
       <p>Raised Amount: ${project.raisedAmount}</p>
-      <Donation project={project} />
+      <Donation
+        project={project}
+        token={token}
+      />
     </div>
   );
 };

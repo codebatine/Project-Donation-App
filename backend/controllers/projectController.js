@@ -41,24 +41,14 @@ exports.approveProject = async (req, res) => {
   }
 };
 
-exports.getAllProjects = async (req, res) => {
-  try {
-    const projects = await Project.find();
-    res.status(200).json(projects);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
-
 exports.donate = async (req, res) => {
   const { projectId, amount } = req.body;
 
   try {
     const project = await Project.findById(projectId);
-    if (!project || !project.approved)
-      return res
-        .status(404)
-        .json({ message: 'Project not found or not approved' });
+    if (!project) {
+      return res.status(404).json({ message: 'Project not found' });
+    }
 
     project.raisedAmount += amount;
     await project.save();

@@ -65,7 +65,7 @@ const App = () => {
           />
           <Route
             path="/projects/:id"
-            element={<ProjectDetails />}
+            element={<ProjectDetails token={token} />}
           />
           <Route
             path="/"

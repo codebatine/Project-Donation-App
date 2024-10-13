@@ -19,7 +19,15 @@ export const approveProject = (projectId, token) =>
       headers: { Authorization: `Bearer ${token}` },
     },
   );
-export const donate = (donationData, token) =>
-  api.post('/projects/donate', donationData, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+export const donate = async (data, token) => {
+  const response = await axios.post(
+    'http://localhost:5000/api/projects/donate',
+    data,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+  return response.data;
+};
