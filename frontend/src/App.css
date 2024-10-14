@@ -253,6 +253,51 @@ div.project {
   pointer-events: none;
 }
 
+
+.project-details {
+  background-color: #1f2833;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 600px;
+  margin: 40px auto;
+}
+
+.progress-bar {
+  background-color: #c5c6c7;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+  height: 20px;
+}
+
+.progress {
+  background-color: #45a29e;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.view-details-button {
+  padding: 15px 30px;
+  font-size: 17px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: #45a29e;
+  color: white;
+  margin-top: 20px;
+}
+
+.view-details-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
