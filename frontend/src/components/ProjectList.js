@@ -31,7 +31,6 @@ const ProjectList = () => {
     return new Intl.DateTimeFormat('en-GB', options).format(date);
   };
 
-  // Helper function to format currency in USD
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -44,46 +43,70 @@ const ProjectList = () => {
   };
 
   return (
-    <div>
-      <h1>Projects</h1>
-      <ul>
+    <div className="project-list-container">
+      <h1>Discover Projects</h1>
+      <div className="project-cards">
         {projects.map((project) => (
-          <li
+          <div
             key={project._id}
-            className="project"
+            className="project-card"
           >
             <h2>{project.name}</h2>
             <p>{project.description}</p>
-            <p>Target Amount: {formatCurrency(project.targetAmount)}</p>
-            <p>Raised Amount: {formatCurrency(project.raisedAmount)}</p>
-            <p>End Date: {formatToCET(project.endDate)}</p>
-            {/* Progress Bar */}
-            <div className="progress-container">
+            <p>
+              <strong>Target:</strong> {formatCurrency(project.targetAmount)}
+            </p>
+            <p>
+              <strong>Raised:</strong> {formatCurrency(project.raisedAmount)}
+            </p>
+            <p>
+              <strong>End Date:</strong> {formatToCET(project.endDate)}
+            </p>
+
+            <div className="progress-bar-container">
               <div className="progress-bar">
                 <div
-                  className="progress"
+                  className={`progress ${
+                    calculateProgress(
+                      project.raisedAmount,
+                      project.targetAmount,
+                    ) == 100
+                      ? 'goal-reached'
+                      : ''
+                  }`}
                   style={{
                     width: `${calculateProgress(
                       project.raisedAmount,
                       project.targetAmount,
                     )}%`,
                   }}
-                ></div>
+                >
+                  {calculateProgress(
+                    project.raisedAmount,
+                    project.targetAmount,
+                  ) == 100 && <span className="checkmark">&#10003;</span>}
+                </div>
               </div>
-              {/* Displaying the percentage */}
-              <p className="progress-percentage">
+              <span className="progress-percentage">
                 {calculateProgress(project.raisedAmount, project.targetAmount)}%
-              </p>
+                {calculateProgress(
+                  project.raisedAmount,
+                  project.targetAmount,
+                ) == 100 && (
+                  <span className="checkmark next-to"> &#10003;</span>
+                )}
+              </span>
             </div>
+
             <Link
               to={`/projects/${project._id}`}
               className="view-details-button"
             >
               View Details
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
