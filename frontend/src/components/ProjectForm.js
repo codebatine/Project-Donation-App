@@ -22,35 +22,62 @@ const ProjectForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Project Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
-      <textarea
-        placeholder="Project Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        required
-      />
-      <input
-        type="number"
-        placeholder="Target Amount"
-        value={targetAmount}
-        onChange={(e) => setTargetAmount(e.target.value)}
-        required
-      />
-      <input
-        type="date"
-        value={endDate}
-        onChange={(e) => setEndDate(e.target.value)}
-        required
-      />
-      <button type="submit">Submit Project</button>
-    </form>
+    <div className="project-form-container">
+      <h2>Create a New Project</h2>
+      <form
+        className="project-form"
+        onSubmit={handleSubmit}
+      >
+        <div className="form-group">
+          <label htmlFor="name">Project Name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter project name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="description">Project Description</label>
+          <textarea
+            id="description"
+            placeholder="Enter project description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="targetAmount">Target Amount ($)</label>
+          <input
+            type="number"
+            id="targetAmount"
+            placeholder="Enter target amount in USD"
+            value={targetAmount}
+            onChange={(e) => setTargetAmount(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="endDate">End Date</label>
+          <input
+            type="date"
+            id="endDate"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+            required
+          />
+        </div>
+        <button
+          className="submit-btn"
+          type="submit"
+        >
+          Submit Project
+        </button>
+      </form>
+    </div>
   );
 };
 
