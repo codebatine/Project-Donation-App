@@ -1,0 +1,19 @@
+.header {
+  background-color: #282c34;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 24px;
+  color: $primary-color;
+}
