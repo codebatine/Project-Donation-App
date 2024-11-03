@@ -82,6 +82,7 @@ body {
   height: 4px;
   background-color: #66fcf1;
   transition: all 0.3s ease;
+  z-index: 999;
 }
 
 .hamburger.open span:nth-child(1) {
@@ -96,7 +97,7 @@ body {
   transform: rotate(-45deg) translate(7px, -7px);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1019px) {
   .hamburger {
     display: flex;
   }
