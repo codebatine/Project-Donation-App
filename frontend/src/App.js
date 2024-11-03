@@ -13,7 +13,7 @@ import ProjectList from './components/ProjectList';
 import ProjectDetails from './components/ProjectDetails';
 import Dashboard from './components/Dashboard';
 import Chatbot from './components/Chatbot';
-import './App.css';
+import './styles/main.scss';
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem('token') || '');
