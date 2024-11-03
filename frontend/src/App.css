@@ -97,7 +97,72 @@ body {
   transform: rotate(-45deg) translate(7px, -7px);
 }
 
-@media (max-width: 1019px) {
+.chatbot-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #1f2833;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.chat-history {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.chat-message {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  color: #c5c6c7;
+}
+
+.user-message {
+  background-color: #45a29e;
+  align-self: flex-end;
+  color: white;
+}
+
+.bot-message {
+  background-color: #3f8b82;
+  align-self: flex-start;
+  color: white;
+}
+
+.chat-input {
+  display: flex;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #45a29e;
+  border-radius: 8px 0 0 8px;
+  background-color: #0b0c10;
+  color: #c5c6c7;
+}
+
+.chat-input button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  background-color: #45a29e;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.chat-input button:hover {
+  background-color: #66fcf1;
+}
+
+
+@media (max-width: 800px) {
   .hamburger {
     display: flex;
   }

@@ -12,6 +12,7 @@ import ProjectForm from './components/ProjectForm';
 import ProjectList from './components/ProjectList';
 import ProjectDetails from './components/ProjectDetails';
 import Dashboard from './components/Dashboard';
+import Chatbot from './components/Chatbot';
 import './App.css';
 
 const App = () => {
@@ -67,6 +68,11 @@ const App = () => {
             path="/projects/:id"
             element={<ProjectDetails token={token} />}
           />
+          <Route
+            path="/chat"
+            element={<Chatbot />}
+          />{' '}
+          {/* Chatbot Route */}
           <Route
             path="/"
             element={<h2>Welcome to the Donation Platform</h2>}
@@ -131,7 +137,16 @@ const Navigation = ({ token, handleLogout }) => {
             className={getLinkClass('/projects/new')}
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Create Project
+            Add
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/chat"
+            className={getLinkClass('/chat')}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Chatbot
           </Link>
         </li>
         <li>

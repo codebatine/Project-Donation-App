@@ -1,46 +1,64 @@
 import React, { useState } from 'react';
-import { askChatbot } from '../services/chatService';
+import axios from 'axios';
 
 const Chatbot = () => {
-  const [message, setMessage] = useState('');
-  const [chatHistory, setChatHistory] = useState([]);
+  const [input, setInput] = useState('');
+  const [messages, setMessages] = useState([]);
 
-  const handleSend = async () => {
-    if (message.trim()) {
-      const userMessage = { sender: 'user', text: message };
-      setChatHistory([...chatHistory, userMessage]);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const userMessage = input.trim();
+    if (!userMessage) return;
 
-      const botResponse = await askChatbot(message);
-      const botMessage = { sender: 'bot', text: botResponse };
-      setChatHistory((prev) => [...prev, botMessage]);
+    setMessages((prev) => [...prev, { sender: 'User', text: userMessage }]);
+    setInput('');
 
-      setMessage('');
+    try {
+      const response = await axios.post('http://localhost:5000/api/chatbot', {
+        message: userMessage,
+      });
+      const botReply = response.data.reply;
+      setMessages((prev) => [...prev, { sender: 'Bot', text: botReply }]);
+    } catch (error) {
+      console.error('Error fetching chatbot response:', error);
+      setMessages((prev) => [
+        ...prev,
+        { sender: 'Bot', text: 'Sorry, there was an issue. Try again later.' },
+      ]);
     }
   };
 
   return (
     <div className="chatbot-container">
-      <div className="chat-history">
-        {chatHistory.map((msg, index) => (
-          <div
+      <h2>Chat With AIssistant</h2>
+      <div className="chatbox">
+        {messages.map((msg, index) => (
+          <p
             key={index}
-            className={`chat-message ${
-              msg.sender === 'user' ? 'user-message' : 'bot-message'
-            }`}
+            className={msg.sender === 'User' ? 'user-message' : 'bot-message'}
           >
-            {msg.text}
-          </div>
+            <strong>{msg.sender}:</strong> {msg.text}
+          </p>
         ))}
       </div>
-      <div className="chat-input">
+      <form
+        onSubmit={handleSubmit}
+        className="chat-input-form"
+      >
         <input
           type="text"
-          placeholder="Ask something..."
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Ask me about donations..."
+          className="chat-input"
         />
-        <button onClick={handleSend}>Send</button>
-      </div>
+        <button
+          type="submit"
+          className="chat-submit-button"
+        >
+          Send
+        </button>
+      </form>
     </div>
   );
 };
