@@ -1,0 +1,103 @@
+@use '../base/variables' as *;
+
+.project-form-container {
+  background-color: $background-color;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.project-form h2 {
+  color: $primary-color;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+}
+
+.project-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: $text-color;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid $secondary-color;
+  border-radius: 10px;
+  background-color: #0b0c10;
+  color: $text-color;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: $primary-color;
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+  height: 150px;
+}
+
+.submit-btn {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  background-color: $secondary-color;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: $primary-color;
+  color: $background-color;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+  background-color: $background-color;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 600px;
+  margin: 40px auto;
+}
+
+input,
+textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid $secondary-color;
+  border-radius: 12px;
+  background-color: #0b0c10;
+  color: $text-color;
+}
+
+input:focus,
+textarea:focus {
+  border-color: $primary-color;
+  box-shadow: 0 0 8px rgba(102, 252, 241, 0.3);
+  outline: none;
+}

@@ -70,7 +70,7 @@ const ProjectList = () => {
                     calculateProgress(
                       project.raisedAmount,
                       project.targetAmount,
-                    ) == 100
+                    ) === 100
                       ? 'goal-reached'
                       : ''
                   }`}
@@ -84,7 +84,7 @@ const ProjectList = () => {
                   {calculateProgress(
                     project.raisedAmount,
                     project.targetAmount,
-                  ) == 100 && <span className="checkmark">&#10003;</span>}
+                  ) === 100 && <span className="checkmark">&#10003;</span>}
                 </div>
               </div>
               <span className="progress-percentage">
@@ -92,7 +92,7 @@ const ProjectList = () => {
                 {calculateProgress(
                   project.raisedAmount,
                   project.targetAmount,
-                ) == 100 && (
+                ) === 100 && (
                   <span className="checkmark next-to"> &#10003;</span>
                 )}
               </span>

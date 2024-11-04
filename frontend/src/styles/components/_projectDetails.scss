@@ -1,0 +1,44 @@
+@use '../base/variables' as *;
+
+.project-details {
+  background-color: $background-color;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 600px;
+  margin: 40px auto;
+}
+
+.project-details h2 {
+  color: $primary-color;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+.project-details p {
+  color: $text-color;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.progress-bar {
+  background-color: $text-color;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+  height: 20px;
+}
+
+.progress {
+  background-color: $secondary-color;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.progress-percentage {
+  display: block;
+  margin-top: 5px;
+  color: $primary-color;
+  font-weight: bold;
+}

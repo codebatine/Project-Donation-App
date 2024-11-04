@@ -1,6 +1,10 @@
-@import 'base/reset';
-@import 'base/typography';
-@import 'base/variables';
-@import 'layout/header';
-@import 'components/buttons';
-@import 'components/chatbot';
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/variables';
+@use 'layout/header';
+@use 'layout/nav';
+@use 'components/buttons';
+@use 'components/chatbot';
+@use 'components/forms';
+@use 'components/cards';
+@use 'components/projectDetails';

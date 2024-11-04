@@ -1,0 +1,108 @@
+@use '../base/variables' as *;
+
+.project-list-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.project-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.project-card {
+  background-color: $background-color;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 15px rgba(100, 100, 100, 0.3);
+}
+
+.project-card h2 {
+  color: $primary-color;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.project-card p {
+  color: $text-color;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.progress-bar-container {
+  margin-top: 10px;
+}
+
+.progress-bar {
+  background-color: $text-color;
+  border-radius: 10px;
+  height: 20px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.progress {
+  background-color: $secondary-color;
+  height: 100%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.project-card:hover .progress {
+  background-color: $primary-color;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(1.02);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.progress-percentage {
+  display: block;
+  margin-top: 5px;
+  color: $primary-color;
+  font-weight: bold;
+}
+
+.project-details {
+  background-color: $background-color;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 600px;
+  margin: 40px auto;
+}
+
+.progress-bar {
+  background-color: $text-color;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 20px 0;
+  height: 20px;
+}
+
+.progress {
+  background-color: $secondary-color;
+  height: 100%;
+  transition: width 0.3s ease;
+}

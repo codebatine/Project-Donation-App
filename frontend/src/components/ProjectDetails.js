@@ -26,7 +26,7 @@ const ProjectDetails = ({ token }) => {
   }
 
   return (
-    <div>
+    <div className="project-details">
       <h2>{project.name}</h2>
       <p>{project.description}</p>
       <p>Target Amount: ${project.targetAmount}</p>
