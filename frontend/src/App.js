@@ -45,7 +45,7 @@ const App = () => {
         <Routes>
           <Route
             path="/signup"
-            element={<Signup />}
+            element={<Signup setToken={setToken} />}
           />
           <Route
             path="/login"

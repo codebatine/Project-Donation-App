@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signup } from '../services/api';
 
-const Signup = () => {
+const Signup = ({ setToken }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -12,8 +12,11 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signup({ username, password });
-      setSuccess('You have signed up! Readyu to go!');
+      const response = await signup({ username, password });
+      const token = response.data.token;
+      localStorage.setItem('token', token);
+      setToken(token);
+      setSuccess('You have signed up! Ready to go!');
       setTimeout(() => {
         navigate('/dashboard');
       }, 1000);
