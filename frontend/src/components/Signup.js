@@ -1,19 +1,32 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { signup } from '../services/api';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signup({ username, password });
-    alert('User created successfully');
+    try {
+      await signup({ username, password });
+      setSuccess('You have signed up! Readyu to go!');
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 1000);
+    } catch (err) {
+      setError('Signup failed. Please try again.');
+    }
   };
 
   return (
     <div className="project-form-container">
       <h2>Create an account</h2>
+      {error && <p className="error-message">{error}</p>}
+      {success && <p className="success-message">{success}</p>}
       <form onSubmit={handleSubmit}>
         <div>
           <input
