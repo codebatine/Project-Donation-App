@@ -76,7 +76,7 @@ npm start
 
 ```bash
 cd frontend
-node servre.js
+node server.js
 ```
 
 ## Access the Application:
