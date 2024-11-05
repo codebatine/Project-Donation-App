@@ -6,9 +6,11 @@ const Dashboard = ({ token }) => {
   }
 
   return (
-    <div>
+    <div className="project-form-container">
       <h2>Welcome to your Dashboard</h2>
-      <p>This is the landing page after login.</p>
+      <div>
+        <p>This is the landing page after login.</p>
+      </div>
     </div>
   );
 };
