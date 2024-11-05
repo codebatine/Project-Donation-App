@@ -29,7 +29,7 @@ const Login = ({ setToken }) => {
 
   return (
     <div className="project-form-container">
-      <h2>Login</h2>
+      <h2>Welcome back!</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Username:</label>
